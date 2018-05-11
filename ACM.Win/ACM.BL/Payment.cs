@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ACM.BL
 {
-    class Payment
+    public class Payment
     {
+        public void ProcessPayment()
+        {
+            //
+        }
     }
 }

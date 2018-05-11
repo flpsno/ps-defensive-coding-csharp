@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace ACM.BL
 {
-    class CustomerRepository
+    public class CustomerRepository
     {
+        public void Add(Customer customer)
+        {
+
+        }
+
+        public void Update()
+        {
+            //
+        }
     }
 }

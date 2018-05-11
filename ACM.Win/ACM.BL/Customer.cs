@@ -15,5 +15,10 @@ namespace ACM.BL
         public string FirsName{ get; set; }
 
         public string LastName { get; set; }
+
+        public void ValidateEmail()
+        {
+            //
+        }
     }
 }

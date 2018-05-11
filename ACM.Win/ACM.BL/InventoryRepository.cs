@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ACM.BL
 {
-    class InventoryRepository
+    public class InventoryRepository
     {
+        public void OrderItems(Order order, bool allowSplitOrders)
+        {
+            //
+        }
     }
 }

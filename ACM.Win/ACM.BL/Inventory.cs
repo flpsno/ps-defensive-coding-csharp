@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ACM.BL
 {
-    class Inventory
+    public class Inventory
     {
     }
 }

@@ -8,5 +8,9 @@ namespace Core.Common
 {
     public class EmailLibrary
     {
+        public void SendEmail(string emaiAddress, string v)
+        {
+            //
+        }
     }
 }

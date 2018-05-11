@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ACM.BL
 {
-    class OrderRepository
+    public class OrderRepository
     {
+        public void Add(Order order)
+        {
+            //
+        }
     }
 }
