@@ -33,7 +33,7 @@ namespace ACM.BL
                 throw new ArgumentException("Actual must be entered", "actualSteps");
 
             if (!decimal.TryParse(goalSteps, out goalStepCount))
-                throw new ArgumentException("Goal must be numeric", "goalSteps");
+                throw new ArgumentException("Goal must be numeric");
 
             if (!decimal.TryParse(actualSteps, out actualStepCount))
                 throw new ArgumentException("Actual must be numeric", "actualSteps");
@@ -46,7 +46,7 @@ namespace ACM.BL
             if (goalStepCount <= 0)
                 throw new ArgumentException("Goal must be greater than 0", "goalSteps");
 
-            return (actualStepCount / goalStepCount) * 100;
+            return Math.Round((actualStepCount / goalStepCount) * 100,2);
         }
     }
 }
