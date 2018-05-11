@@ -45,10 +45,17 @@
     <Compile Include="InventoryRepository.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="OrderController.cs" />
     <Compile Include="OrderRepository.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="PaymentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Common\Core.Common.csproj">
+      <Project>{ad653581-89a3-44fb-8bc5-1044ca2f17f1}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

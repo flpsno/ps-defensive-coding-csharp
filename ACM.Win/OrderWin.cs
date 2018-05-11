@@ -21,37 +21,25 @@ namespace ACM.Win
 
         private void button1_Click(object sender, EventArgs e)
         {
+            PlaceOrder();
+        }
+
+        private void PlaceOrder()
+        {
             var customer = new Customer();
             // populate the customer instance
 
             var order = new Order();
             // populate the order instance
 
-            var allowSplitOrders = true;
-            var emailReceipt = true;
-
             var payment = new Payment();
             // populate the payment instance
 
-            var customerRepository = new CustomerRepository();
-            customerRepository.Add(customer);
-
-            var orderRepository = new OrderRepository();
-            orderRepository.Add(order);
-
-            var inventoryRepository = new InventoryRepository();
-            inventoryRepository.OrderItems(order, allowSplitOrders);
-
-            payment.ProcessPayment();
-
-            if (emailReceipt)
-            {
-                customer.ValidateEmail();
-                customerRepository.Update();
-
-                var emailLibrary = new EmailLibrary();
-                emailLibrary.SendEmail(customer.EmaiAddress, "Here is your receipt");
-            }
+            var orderController = new OrderController();
+            orderController.PlaceOrder(customer, order, payment, 
+                allowSplitOrders: false, 
+                emailReceipt: true);
         }
+
     }
 }
