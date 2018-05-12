@@ -48,6 +48,10 @@ namespace ACM.BL
 
                     emailLibrary.SendEmail(customer.EmaiAddress, "Here is your receipt");
                 }
+                else
+                {
+                    // log the messages
+                }
             }
         }
     }
