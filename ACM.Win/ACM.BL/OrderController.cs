@@ -25,12 +25,29 @@ namespace ACM.BL
             emailLibrary = new EmailLibrary();
         }
 
-        public void PlaceOrder(Customer customer,
+        public OperationResult PlaceOrder(Customer customer,
             Order order,
             Payment payment,
             bool allowSplitOrders,
             bool emailReceipt)
         {
+            if (customer == null)
+            {
+                throw new ArgumentException("Customer instance is null");
+            }
+
+            if (order == null)
+            {
+                throw new ArgumentException("Order instance is null");
+            }
+
+            if (payment == null)
+            {
+                throw new ArgumentException("Payment instance is null");
+            }
+
+            var op = new OperationResult();
+
             customerRepository.Add(customer);
 
             orderRepository.Add(order);
@@ -51,8 +68,13 @@ namespace ACM.BL
                 else
                 {
                     // log the messages
+                    if (result.MessageList.Any())
+                    {
+                        op.AddMessage(result.MessageList[0]);
+                    }
                 }
             }
+            return op;
         }
     }
 }
