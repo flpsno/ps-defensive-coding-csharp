@@ -25,26 +25,29 @@ namespace ACM.BL
             emailLibrary = new EmailLibrary();
         }
 
-        public void PlaceOrder(Customer customer, 
-            Order order, 
-            Payment payment, 
-            bool allowSplitOrders, 
+        public void PlaceOrder(Customer customer,
+            Order order,
+            Payment payment,
+            bool allowSplitOrders,
             bool emailReceipt)
         {
             customerRepository.Add(customer);
 
             orderRepository.Add(order);
-            
+
             inventoryRepository.OrderItems(order, allowSplitOrders);
 
             payment.ProcessPayment();
 
             if (emailReceipt)
             {
-                customer.ValidateEmail();
-                customerRepository.Update();
-                
-                emailLibrary.SendEmail(customer.EmaiAddress, "Here is your receipt");
+                var result = customer.ValidateEmail();
+                if (result.Success)
+                {
+                    customerRepository.Update();
+
+                    emailLibrary.SendEmail(customer.EmaiAddress, "Here is your receipt");
+                }
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,41 @@ namespace ACM.BL
 
         public string LastName { get; set; }
 
-        public void ValidateEmail()
+        public OperationResult ValidateEmail()
         {
-            //
+            var op = new OperationResult();
+
+            if (string.IsNullOrWhiteSpace(this.EmaiAddress))
+            {
+                //throw new ArgumentException("Email address is null");
+                op.Success = false;
+                op.AddMessage("Email address is null");
+            }
+
+            if (op.Success)
+            {
+                var isValidFormat = true;
+                // Code here that validates the format of the email
+                // using Regular Expressions
+                if (!isValidFormat)
+                {
+                    op.Success = false;
+                    op.AddMessage("Email address is not in a corret format");
+                }
+            }
+
+            if (op.Success)
+            {
+                var isRealDomain = true;
+                // Code here that confirms whether domain exists
+                if (!isRealDomain)
+                {
+                    op.Success = false;
+                    op.AddMessage("Email address does not include a valid domain");
+                }
+            }
+
+            return op;
         }
 
         public decimal CalculatePercentOfGoalSteps(string goalSteps, string actualSteps)
@@ -38,7 +71,7 @@ namespace ACM.BL
             if (!decimal.TryParse(actualSteps, out actualStepCount))
                 throw new ArgumentException("Actual must be numeric", "actualSteps");
 
-            return CalculatePercentOfGoalSteps(goalStepCount, actualStepCount);
+            return CalculatePercentOfGoalSteps(goalStepCount, actualStepCount); ;
         }
 
         public decimal CalculatePercentOfGoalSteps(decimal goalStepCount, decimal actualStepCount)
@@ -46,7 +79,7 @@ namespace ACM.BL
             if (goalStepCount <= 0)
                 throw new ArgumentException("Goal must be greater than 0", "goalSteps");
 
-            return Math.Round((actualStepCount / goalStepCount) * 100,2);
+            return Math.Round((actualStepCount / goalStepCount) * 100, 2);
         }
     }
 }
