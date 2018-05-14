@@ -10,7 +10,15 @@ namespace Core.Common
     {
         public void SendEmail(string emaiAddress, string v)
         {
-            //
+            try
+            {
+                // send an email
+            }
+            catch (InvalidOperationException ex)
+            {
+                // log the issue
+                throw;
+            }
         }
     }
 }

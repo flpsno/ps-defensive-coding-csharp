@@ -41,9 +41,19 @@ namespace ACM.Win
             // populate the payment instance
 
             var orderController = new OrderController();
-            orderController.PlaceOrder(customer, order, payment, 
-                allowSplitOrders: false, 
+
+            try
+            {
+                orderController.PlaceOrder(customer, order, payment,
+                allowSplitOrders: false,
                 emailReceipt: true);
+            }
+            catch (ArgumentException ex)
+            {
+                // log the issue
+                // display a message to user that the order was nos successful
+            }
+            
         }
 
     }
